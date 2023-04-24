@@ -8,7 +8,7 @@ const domain = process.env.PRODUCTION_DOMAIN; // Dynamic domain where our apppli
 const buildConfig = {
 	mode: 'production',
 	output: {
-		filename: '[name].[contenthash].js' // Ensure that whenever we build files for production, it will use this template to name them
+		filename: '[name].[contenthash].js', // Ensure that whenever we build files for production, it will use this template to name them
 		publicPath: '/container/latest/' // Path where weback is trying to refer to a files which has been build (it will prepend the filenamse with publicPath)
 	},
 	plugins: [
