@@ -3,6 +3,7 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const commonConfig = require('./webpack.common'); // obtain configuration from webpack.common config
 const packageJson = require('../package.json');
 
+// PRODUCTION_DOMAIN secret must be set up in the github repo, we must also make it available for webpack
 const domain = process.env.PRODUCTION_DOMAIN; // Dynamic domain where our appplication is hosted, will have to be set in CI/CD file
 
 const buildConfig = {
@@ -15,7 +16,7 @@ const buildConfig = {
 		new ModuleFederationPlugin({
 			name: 'container',
 			remotes: {
-				marketing: `marketing@${domain}/marketing/remoteEntry.js` // /marketing/remoteEntry.js is a file in marketing folder on our domain
+				marketing: `marketing@${domain}/marketing/latest/remoteEntry.js` // /marketing/remoteEntry.js is a file in marketing folder on our domain
 			},
 			shared: packageJson.dependencies // Sharing the package dependencies between applications
 		})
