@@ -4,6 +4,7 @@ import App from './App';
 import { createMemoryHistory, createBrowserHistory } from 'history'; // Create copy of memory history
 // Mount function to strart up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+	// Create initial path with some initialPath default to avoid state mismatch on routing
 	const history = defaultHistory || createMemoryHistory({
 		initialEntries: [initialPath]
 	}); // Default history will be called only when present, otherwise we will use memoryhistory
@@ -28,7 +29,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // If we are in the development and in isolation, call mount immediately
 if (process.env.NODE_ENV === 'development') {
-	const devRoot = document.querySelector("#_marketing-dev-root");
+	const devRoot = document.querySelector("#_auth-dev-root");
 	// browser history will be called in isolation, memory history will be used if we are not in isolation
 	if (devRoot) {
 		mount(devRoot, { defaultHistory: createBrowserHistory() });

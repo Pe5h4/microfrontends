@@ -7,10 +7,10 @@ const packageJson = require('../package.json');
 const devConfig = {
 	mode: 'development',
 	output: {
-		publicPath: 'http://localhost:8091/'
+		publicPath: 'http://localhost:8092/' // Publicpath MUST be set in microfrontends dev env to correctly load the path of main.js file
 	},
 	devServer: {
-		port: 8091,
+		port: 8092,
 		// historyApiFallback: {
 		// 	index: '/index.html'
 		// }
@@ -18,10 +18,10 @@ const devConfig = {
 	},
 	plugins: [
 		new ModuleFederationPlugin({
-			name: 'marketing', // Global variable
+			name: 'auth', // Global variable
 			filename: 'remoteEntry.js',
 			exposes: { // Exposes the file for sharing
-				'./MarketingApp': './src/bootstrap'
+				'./AuthApp': './src/bootstrap'
 			},
 			// For React it is recommended to set it to true (we want to have only 1 react version across the applications)
 			// shared: {

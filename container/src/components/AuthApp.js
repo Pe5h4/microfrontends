@@ -1,11 +1,11 @@
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-/*MarketingApp is a name of exposed file in the webpack config of marketing
+/*AuthApp is a name of exposed file in the webpack config of auth
 
 exposes: { // Exposes the file for sharing
-	'./MarketingApp': './src/bootstrap'
+	'./AuthApp': './src/bootstrap'
 }
 
 */
@@ -22,7 +22,7 @@ export default () => {
 	// take a reference of marketing app and put it to div
 	useEffect(() => {
 		const { onParentNavigate } = mount(ref.current, {
-			initialPath: history.location.pathname, // Initial path of the container propagated to bootstrap mount of Marketing app
+			initialPath: history.location.pathname, // Initial path of the container propagated to bootstrap mount of Auth app
 			// nextPathname represent the path navigation is attempted to navigate to
 			onNavigate: ({pathname: nextPathname}) => {
 				// Prevent infinite flow

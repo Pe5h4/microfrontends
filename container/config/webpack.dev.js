@@ -7,6 +7,9 @@ const packageJson = require('../package.json');
 // Container is a host and wants to make use of shared (exposed) modules of our app
 const devConfig = {
 	mode: 'development',
+	output: {
+		publicPath: 'http://localhost:8090/'
+	},
 	devServer: {
 		port: 8090,
 		// historyApiFallback: {
@@ -19,6 +22,7 @@ const devConfig = {
 			name: 'container',
 			remotes: {
 				marketing: 'marketing@http://localhost:8091/remoteEntry.js', // marketing name mathces with the name of marketing in module federation plugin
+				auth: 'auth@http://localhost:8092/remoteEntry.js', // auth name mathces with the name of auth in module federation plugin
 			},
 			// For React it is recommended to set it to true (we want to have only 1 react version across the applications)
 			// shared: {
