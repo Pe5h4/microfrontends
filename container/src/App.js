@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Progress from './components/Progress';
@@ -15,14 +15,21 @@ const generateClassName = createGenerateClassName({
 })
 
 export default () => {
+
+	const [userInfo, setUserInfo] = useState(false); // In our case this should be a undefined/object
+
 	return(
 		<BrowserRouter>
 			<StylesProvider generateClassName={generateClassName}>
 				<div>
-					<Header />
+					{/*consuming userInfo in header*/}
+					<Header userInfo={userInfo} onSignOut={() => setUserInfo(false)} />
 					<Suspense fallback={<Progress />}>
 					<Switch>
-						<Route path="/auth" component={AuthApp} />
+						<Route path="/auth">
+							{/*consuming userInfo in Auth app*/}
+							<AuthApp userInfo={() => setUserInfo(true)}/>
+						</Route>
 						<Route path="/" component={MarketingApp} />
 					</Switch>
 					</Suspense>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { createMemoryHistory, createBrowserHistory } from 'history'; // Create copy of memory history
 // Mount function to strart up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
 	// Create initial path with some initialPath default to avoid state mismatch on routing
 	const history = defaultHistory || createMemoryHistory({
 		initialEntries: [initialPath]
@@ -14,7 +14,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 	}
 	
 
-	ReactDOM.render(<App history={history} />, el);
+	ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
 	// Communication between parent and child components on navigation
 	return {

@@ -14,7 +14,7 @@ exposes: { // Exposes the file for sharing
 
 
 // Can use this pattern in almost any framework
-export default () => {
+export default ({ userInfo }) => {
 
 	const ref = useRef(null);
 	const history = useHistory(); // Copy of the browser history
@@ -32,6 +32,10 @@ export default () => {
 					history.push(nextPathname);	
 				}
 			},
+			// onSignIn method which is passed down to Auth app to allow sign in
+			onSignIn: () => {
+				userInfo();
+			}
 		});
 		history.listen(onParentNavigate); // if there is any call to our router, use onParentNAvigate function
 	}, [])
