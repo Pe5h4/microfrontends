@@ -17,7 +17,8 @@ const buildConfig = {
 			name: 'container',
 			remotes: {
 				marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`, // /marketing/remoteEntry.js is a file in marketing folder on our domain
-				auth: `auth@${domain}/auth/latest/remoteEntry.js` // /auth/remoteEntry.js is a file in marketing folder on our domain
+				auth: `auth@${domain}/auth/latest/remoteEntry.js`, // /auth/remoteEntry.js is a file in marketing folder on our domain
+				dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js` // /dashboard/remoteEntry.js is a file in marketing folder on our domain
 			},
 			shared: packageJson.dependencies // Sharing the package dependencies between applications, it also break javascript files to more files (and makes better performance on loading)
 		})

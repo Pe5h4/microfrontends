@@ -23,6 +23,7 @@ const devConfig = {
 			remotes: {
 				marketing: 'marketing@http://localhost:8091/remoteEntry.js', // marketing name mathces with the name of marketing in module federation plugin
 				auth: 'auth@http://localhost:8092/remoteEntry.js', // auth name mathces with the name of auth in module federation plugin
+				dashboard: 'dashboard@http://localhost:8093/remoteEntry.js', // dashboard name mathces with the name of auth in module federation plugin
 			},
 			// For React it is recommended to set it to true (we want to have only 1 react version across the applications)
 			// shared: {
